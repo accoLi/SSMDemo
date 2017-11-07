@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+   <diskStore path="java.io.mytmpdir"/>
+   <defaultCache
+     maxElementsInMemory="1000"
+     eternal="false"
+     timeToIdleSeconds="10"
+     timeToLiveSeconds="10"
+     diskPersistent="false"
+     overflowToDisk="true"
+     diskExpiryThreadIntervalSeconds="120"
+     memoryStoreEvictionPolicy="LRU"
+   >
+   
+   </defaultCache>
+   
+   <cache name="myCache"
+     maxElementsInMemory="1000"
+     eternal="false"
+     timeToIdleSeconds="10"
+     timeToLiveSeconds="10"
+     diskPersistent="false"
+     overflowToDisk="true"
+     diskExpiryThreadIntervalSeconds="120"
+     memoryStoreEvictionPolicy="LFU"
+   >
+   <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+        properties="replicateAsynchronously=true,
+		    	    replicatePuts=true,
+		    	    replicateUpdates=true,
+		            replicateUpdatesViaCopy=true,
+		    	    replicateRemovals=true"
+    
+   />
+   
+   </cache>
+</ehcache>

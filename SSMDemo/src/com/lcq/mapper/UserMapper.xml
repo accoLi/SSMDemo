@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lcq.dao.UserMapper">
+  
+   <resultMap type="com.lcq.pojo.User" id="usermapper">
+     <id column="id" property="id"/>
+     <result column="firstname" property="firstName"/>
+     <result column="lastname" property="lastName"/>
+     <result column="email" property="email"/>
+     <result column="phone" property="phone"/>
+   </resultMap>
+   
+   <select id="selectAllUser" resultMap="usermapper" parameterType="map">
+       select * from user
+       limit ${start},${pageSize}
+   </select>
+   <select id="selectUserCount" resultType="java.lang.Integer">
+       select count(*) from user
+   </select>
+</mapper>
